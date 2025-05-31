@@ -1,28 +1,25 @@
 from pydantic import BaseModel
 
-from model.explorer import Explorer
+from model.explorer import Explorer, CreateExplorer
 
 _explorers = [
     Explorer(
+        id=1,
         name="Explorer",
         description="A person who explores an unfamiliar area.",
         country="Various",
-        aka="Adventurer",
-        area="Various"
     ),
     Explorer(
+        id=2,
         name="Explorer",
         description="A person who explores an unfamiliar area.",
         country="Various",
-        aka="Adventurer",
-        area="Various"
     ),
     Explorer(
+        id=3,
         name="Explorer",
         description="A person who explores an unfamiliar area.",
         country="Various",
-        aka="Adventurer",
-        area="Various"
     )
 ]
 
@@ -33,12 +30,13 @@ def get_all() -> list[Explorer]:
     """
     return _explorers
 
-def get(name: str) -> Explorer | None:
+def get_one(id: int) -> Explorer | None:
     for _explorer in _explorers:
-        if _explorer.name == name:
+        if _explorer.id == id:
             return _explorer
     return None
-def create(explorer: Explorer) -> Explorer:
+
+def create(explorer: CreateExplorer) -> Explorer:
     """
     Add a new explorer.
     """

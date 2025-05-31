@@ -1,5 +1,8 @@
-from model.creature import Creature
-import fake.creature as data
+from model.creature import Creature, CreateCreature
+# get fake data currently commented out
+# import fake.creature as data
+
+import data.creature as data
 
 from typing import Optional
 
@@ -9,13 +12,13 @@ def get_all() -> list[Creature]:
     """
     return data.get_all()
 
-def get(name: str) -> Optional[Creature]:
+def get(id: int) -> Optional[Creature]:
     """
-    Get a creature by name.
+    Get a creature by id.
     """
-    return data.get(name)
+    return data.get_one(id)
 
-def create(creature: Creature) -> Creature:
+def create(creature: CreateCreature) -> Creature:
     """
     Add a new creature.
     """
@@ -25,7 +28,7 @@ def replace(id, creature: Creature) -> Creature:
     """
     Replace an existing creature.
     """
-    return data.replace(id, creature)
+    return data.modify(id, creature)
 
 def modify(id, creature: Creature) -> Creature:
     """

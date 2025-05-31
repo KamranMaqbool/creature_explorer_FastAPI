@@ -2,8 +2,14 @@ from pydantic import BaseModel
 
 
 class Explorer(BaseModel):
+    id: int
     name: str
     description: str
     country: str
-    aka: str
-    area: str
+
+
+class CreateExplorer(BaseModel):
+    name: str
+    description: str
+    country: str
+
